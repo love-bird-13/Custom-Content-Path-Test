@@ -1,4 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+//var builder = WebApplication.CreateBuilder(args);
+
+var oldpath = Directory.GetCurrentDirectory().Split("\\");
+var newpath = string.Join("\\", oldpath.Take(oldpath.Length - 1).ToArray());
+WebApplicationBuilder builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    ContentRootPath = newpath,
+    WebRootPath = ""
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
